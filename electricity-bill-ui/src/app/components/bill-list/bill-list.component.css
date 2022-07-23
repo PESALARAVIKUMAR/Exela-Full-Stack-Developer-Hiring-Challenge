@@ -1,0 +1,32 @@
+.title-list {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.create-button {
+    border-radius: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+.view-icon {
+    cursor: pointer;
+    color: #1976d2;   
+}
+
+.edit-icon {
+    cursor: pointer;
+    color: #673ab7;
+}
+
+.delete-icon {
+    cursor: pointer;
+    color: red;
+}
+
+.success-message {
+    color: green;
+    font-size: 15px;
+}

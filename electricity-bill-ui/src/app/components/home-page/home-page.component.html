@@ -1,0 +1,8 @@
+<div class="toolbar" role="banner">
+    <h2 class="title">Electricity Billing</h2>
+</div>
+
+<div class="content" role="main">
+    <app-user-details (userSelected)="onUserChange($event)"></app-user-details>
+    <app-bill-list *ngIf="enableBillsListView" [currentUser]="currentUser"></app-bill-list>
+</div>

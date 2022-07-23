@@ -1,0 +1,35 @@
+.user-content {
+    display: flex;
+}
+
+.mat-form-field {
+    margin-right: 5px;
+}
+
+.check-icon {
+    background-color: #673ab7;
+    border-radius: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.close-icon {
+    background-color: #f44336;
+    border-radius: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.error-message {
+    font-size: 15px;
+    color: red;
+}
+
+.success-message {
+    color: green;
+    font-size: 15px;
+}
+
+.create-button {
+    border-radius: 20px;
+}

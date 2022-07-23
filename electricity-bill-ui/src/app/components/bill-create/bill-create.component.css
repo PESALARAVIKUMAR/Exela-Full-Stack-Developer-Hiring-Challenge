@@ -1,0 +1,15 @@
+.btn-cancel {
+    background-color: #f44336;
+    border-radius: 20px;
+}
+
+.btn-create {
+    background-color: #673ab7;
+    border-radius: 20px;
+    color: white;
+}
+
+.error-message {
+    font-size: 15px;
+    color: red;
+}

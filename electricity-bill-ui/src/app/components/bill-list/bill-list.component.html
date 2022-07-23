@@ -1,0 +1,37 @@
+<div class="row" style="color:#1976d2;">
+    <mat-label class="title-list">Electricity Bills</mat-label>
+    <button mat-raised-button color="primary" class="create-button" (click)="createBill()">Add Bill</button>
+    &nbsp;<span class="success-message" *ngIf="enableBillsOperationsMsg">{{billsOperationsMsg}}</span>
+</div>
+<div class="row">
+    <table mat-table [dataSource]="userBills" class="mat-elevation-z8">
+        <ng-container matColumnDef="bill_created_on">
+            <th mat-header-cell *matHeaderCellDef> Created On </th>
+            <td mat-cell *matCellDef="let element"> {{element.bill_created_on}} </td>
+        </ng-container>
+        <ng-container matColumnDef="units_consumed">
+            <th mat-header-cell *matHeaderCellDef> Units Consumed </th>
+            <td mat-cell *matCellDef="let element"> {{element.units_consumed}} </td>
+        </ng-container>
+        <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef (click)="sortBillsColumnWise('AMOUNT')"> Amount {{amountSortType}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="paid_on">
+            <th mat-header-cell *matHeaderCellDef> Paid On </th>
+            <td mat-cell *matCellDef="let element"> {{element.paid_on}} </td>
+        </ng-container>
+        <ng-container matColumnDef="icons">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon aria-hidden="false" aria-label="Remove red eye icon" class="view-icon" matTooltip="View" (click)="editViewBillData(element,'VIEW')">remove_red_eye</mat-icon>&nbsp;
+                <mat-icon aria-hidden="false" aria-label="Edit icon" class="edit-icon" matTooltip="Edit" (click)="editViewBillData(element,'EDIT')">edit</mat-icon>&nbsp;
+                <mat-icon aria-hidden="false" aria-label="Delete icon" class="delete-icon" matTooltip="Delete" (click)="deleteBillData(element)">delete</mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator (page)="billsPaginatorChange($event)" [length]="totalBillsCount" [pageSize]="10" [pageSizeOptions]="[5, 10, 15, 20]" aria-label="Select page"></mat-paginator>
+</div>

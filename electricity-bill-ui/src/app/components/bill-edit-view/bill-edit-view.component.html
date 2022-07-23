@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Electricity Bill Details</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="row">
+        <mat-form-field class="name-field" appearance="fill" style="width: 100%;">
+            <mat-label>Bill Created On</mat-label>
+            <input matInput [matDatepicker]="billCreatedOnPicker" [(ngModel)]="billDataObj.bill_created_on" [disabled]="disbleBillEdit">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="billCreatedOnPicker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #billCreatedOnPicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="name-field" appearance="fill" style="width: 100%;">
+            <mat-label>Bill Paid On</mat-label>
+            <input matInput [matDatepicker]="billPaidOnPicker" [(ngModel)]="billDataObj.paid_on" [disabled]="disbleBillEdit">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="billPaidOnPicker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #billPaidOnPicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="name-field" appearance="fill" style="width: 49%;">
+            <mat-label>Units Consumed</mat-label>
+            <input type="number" matInput #message maxlength="10" placeholder="" [(ngModel)]="billDataObj.units_consumed" [disabled]="disbleBillEdit">
+        </mat-form-field>&nbsp;
+        <mat-form-field class="name-field" appearance="fill" style="width: 50%;">
+            <mat-label>Amount</mat-label>
+            <input type="number" matInput #message maxlength="10" placeholder="" [(ngModel)]="billDataObj.amount" [disabled]="disbleBillEdit">
+        </mat-form-field><br>
+        <mat-form-field appearance="fill" style="width: 25%;">
+            <mat-label>Select House Type</mat-label>
+            <mat-select name="houseType" [(ngModel)]="billDataObj.house_type" [disabled]="disbleBillEdit">
+            <mat-option *ngFor="let houseType of HOUSE_TYPES" [value]="houseType.value">
+                {{houseType.name}}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <span class="error-message" *ngIf="enableBillsOperationsMsg">{{billsOperationsMsg}}</span>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="closeDialog()" class="btn-cancel">Close</button>
+    <button mat-button *ngIf="!disbleBillEdit" (click)="updateBill()" class="btn-create">Update</button>
+</mat-dialog-actions>
